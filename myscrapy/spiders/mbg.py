@@ -15,8 +15,8 @@ class MbgSpider(CrawlSpider):
     allowed_domains = ['imiaobige.com']
     start_urls = ['https://www.imiaobige.com/all/1.html']
     rules=(
-        # Rule(LinkExtractor(allow=r'all/([1-9]|[1-9]\\d|100).html'),callback='parse_all',follow=True),
-        Rule(LinkExtractor(allow=r'all/(2).html'),callback='parse_all',follow=True),
+        Rule(LinkExtractor(allow=r'all/([1-9]\d?|100).html'),callback='parse_all',follow=True),
+       # Rule(LinkExtractor(allow=r'all/(2).html'),callback='parse_all',follow=True),
     )
     def parse_all(self,response):
         item_loader=ItemLoader(item=BookItem(),response=response)
