@@ -29,14 +29,14 @@ class MyscrapyPipeline(object):
         self.client.close()
     def process_item(self, item, spider):
         if isinstance(item,BookinfoItem):
-            self.db.book_info.update({'book_id':item['book_id']},{'$set':dict(item)},True)
-            # self.db.book_info.insert(dict(item))
+            # self.db.book_info.update({'book_id':item['book_id']},{'$set':dict(item)},True)
+            self.db.book_info.insert(dict(item))
             # return item
         elif isinstance(item,SectionItem):
-            self.db.section_info.update({'section_id':item['section_id']},{'$set':dict(item)},True)
-            # self.db.section_info.insert(dict(item))
+            # self.db.section_info.update({'section_id':item['section_id']},{'$set':dict(item)},True)
+            self.db.section_info.insert(dict(item))
             # return item
         elif isinstance(item,ContentItem):
-            self.db.content_info.update({'section_id':item['section_id']},{'$set':dict(item)},True)
-            # self.db.content_info.insert(dict(item))
+            # self.db.content_info.update({'section_id':item['section_id']},{'$set':dict(item)},True)
+            self.db.content_info.insert(dict(item))
             # return item
