@@ -5,7 +5,7 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 import pymongo
-from myscrapy.items import BookinfoItem,SectionItem,ContentItem
+from myscrapy.items import BookinfoItem,SectionItem
 
 class MyscrapyPipeline(object):
     def __init__(self,mongo_db,mongo_uri,mongo_user,mongo_pwd):
@@ -36,7 +36,7 @@ class MyscrapyPipeline(object):
             # self.db.section_info.update({'section_id':item['section_id']},{'$set':dict(item)},True)
             self.db.section_info.insert(dict(item))
             # return item
-        elif isinstance(item,ContentItem):
+        # elif isinstance(item,ContentItem):
             # self.db.content_info.update({'section_id':item['section_id']},{'$set':dict(item)},True)
-            self.db.content_info.insert(dict(item))
+            # self.db.content_info.insert(dict(item))
             # return item
